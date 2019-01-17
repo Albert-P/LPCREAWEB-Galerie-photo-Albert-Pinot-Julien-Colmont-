@@ -6,7 +6,7 @@ class User{
     private $pseudo;
     private $mdp;
     private $admin;
-    private $date_inscription;
+    private $dateInscription;
     private $actif;
     
     public function __construct(array $donnees){
@@ -35,34 +35,34 @@ class User{
         $this->email = $adresse;
     }
     public function getPseudo(){
-        return $this-> $pseudo;
+        return $this-> pseudo;
     }
     public function setPseudo($name){
-        $this->$pseudo = $name;
+        $this->pseudo = $name;
     }
     public function getMdp(){
-        return $this-> $Mdp;
+        return $this-> mdp;
     }
     public function setMdp($password){
-        $this->$mdp = $password;
+        $this->mdp = $password;
     }
     public function getAdmin(){
-        return $this-> $admin;
+        return $this-> admin;
     }
     public function setAdmin($administrateur){
-        $this->$admin = $administrateur;
+        $this->admin = $administrateur;
     }
-    public function getDate_inscription(){
-        return $this-> $date_inscription;
+    public function getDateInscription(){
+        return $this-> dateInscription;
     }
-    public function setDate_inscription($dateInsrciption){
-        $this->$date_inscription = $dateInsrciption;
+    public function setDateInscription($dateInsrciption){
+        $this->dateInscription = $dateInsrciption;
     }
     public function getActif(){
-        return $this-> $actif;
+        return $this-> actif;
     }
     public function setActif($activite){
-        $this->$actif = $activite;
+        $this->actif = $activite;
     }
 
 }
