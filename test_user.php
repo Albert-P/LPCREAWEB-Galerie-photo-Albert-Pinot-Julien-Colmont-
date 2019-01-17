@@ -1,6 +1,7 @@
 <?php
 
-include('User.class.php');
+include('class/User.class.php');
+
 $array = array(
 'id' => '11',
 'email' => 'juliencolmont59@gmail.com'
