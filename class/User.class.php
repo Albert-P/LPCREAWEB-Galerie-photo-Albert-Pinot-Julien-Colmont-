@@ -9,14 +9,12 @@ class User{
     private $date_inscription;
     private $actif;
     
-    public function __construct($id,$email,$pseudo,$mdp,$admin,$date_inscription,$actif){
-              $this->setIdUser($id);    
-              $this->setEmail($adresse);
-              $this->setPseudo($name);
-              $this->setMdp($password);
-              $this->setAdmin($administrateur);
-              $this->setDate_inscription($dateInsrciption);
-              $this->setActif($activite);
+    public function __construct(array $donnees){
+              $this->hydrate($donnees);
+=======
+
+    public function __construct(array $donnees){
+              $this->hydrate($donnees);
     }
 
     public function hydrate(array $donnees){
