@@ -5,7 +5,7 @@ function chargerClasse($classname)
   require 'class/'.$classname.'.class.php';
 }
 
-spl_autoload_register('chagerClasse');
+spl_autoload_register('chargerClasse');
 
   if(isset($_POST['creer'])){
     if(!empty($_POST['email'])/*&& */){
