@@ -1,6 +1,6 @@
 <?php
 class User{
-
+    
     private $idUser;
     private $email;
     private $pseudo;
@@ -64,6 +64,6 @@ class User{
     public function setActif($activite){
         $this->$actif = $activite;
     }
-
+    
 }
 ?>
