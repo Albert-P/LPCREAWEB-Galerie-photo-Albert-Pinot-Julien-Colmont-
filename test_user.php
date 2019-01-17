@@ -13,7 +13,7 @@ spl_autoload_register('chagerClasse');
         'email' => $_POST['email'],
       );
       $user = new User(array_user);
-      $userManager->add($user)
+      $userManager->add($user);
     }
   }
 ?>
