@@ -7,7 +7,6 @@ function chargerClasse($classname)
 
 spl_autoland_register('chagerClasse');
 
-
 $array = array(
 'id' => '11',
 'email' => 'juliencolmont59@gmail.com'
