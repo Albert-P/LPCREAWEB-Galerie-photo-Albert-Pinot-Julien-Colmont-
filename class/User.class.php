@@ -1,6 +1,6 @@
 <?php
 class User{
-
+    /* Donnée lors de l'inscription */
     private $idUser;
     private $email;
     private $pseudo;
@@ -22,6 +22,7 @@ class User{
             }
     }
 
+    /* Asseceurs=getteurs mutateurs=setteurs */
     public function getIdUser(){
         return $this->idUser;
     }

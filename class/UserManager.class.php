@@ -12,7 +12,7 @@ class UserManager{
   public function getBd(){
     return $this->bd;
   }
-
+  /* Add User */
   public function add(User $user){
     $req = $this->getBd()->prepare("INSERT INTO User (email,pseudo,mdp,actif,date_inscription,admin)" ."VALUES (:email,:pseudo,:mdp,:actif,:dateInscription,:admin);");
     $req->bindValue(':email', $user->getEmail());
@@ -26,6 +26,67 @@ class UserManager{
     $user->hydrate([
       'id' => $this->getBd()->lastInsertId()
     ]);
+  }
+
+  /* Modification User */
+  public function edit(User $user){
+    $req = $this->getBd()->prepare("UPDATE User SET pseudo=:pseudo email=:email mdp=:mdp actif=:actif admin=:admin WHERE id=:idUser ");
+    $req->bindValue(':idUser', $user->getIdUser());
+    $req->bindValue(':email', $user->setEmail(':email'));
+    $req->bindValue(':pseudo', $user->getPseudo());
+    $req->bindValue(':mdp', $user->getMdp());
+    $req->bindValue(':actif', $user->getActif());
+    $req->bindValue(':admin', $user->getAdmin());
+    $req->execute();
+
+  }
+
+  /* Suppresion User */
+  public function sup(User $user){
+    $req = $this->getBd()->prepare("DELETE FROM User WHERE id = :idUser;");
+    $req->bindValue(':idUser', $user->getIdUser());
+    $req->execute();
+  }
+
+  /* Compte le nombre d'utilisateur dans la bdd */
+  public function nbUser(){
+     $req = $this->getBd()->query("SELECT COUNT(id) AS nbUser FROM User;");
+     $nbUser = $req->fetch();
+     $req->closeCursor();
+     echo '<p>On compte '.$nbUser['nbUser'].' utilisateur(s)</p>';
+  }
+
+  /* Affichage de la liste des users */
+  public function getList(){
+     $req = $this->getBd()->query("SELECT email,pseudo,mdp,actif,date_inscription,admin  FROM User;");
+     $text="<table border='1' style='text-align:center;' ><tr>
+        <th> pseudo </th>
+        <th> email </th>
+        <th> mdp </th>
+        <th> actif </th>
+        <th> date_inscription </th>
+        <th> admin </th>
+      </tr>";
+      while ($donnees = $req->fetch() ) {
+       $text.= '<tr><td>'.$donnees['pseudo'].'</td>';
+       $text.= '<td>'.$donnees['email'].'</td>';
+       $text.= '<td>'.$donnees['mdp'].'</td>';
+       $text.= '<td>'.$donnees['actif'].'</td>';
+       $text.= '<td>'.$donnees['date_inscription'].'</td>';
+       $text.= '<td>'.$donnees['admin'].'</td></tr>';
+      }
+      $text.='</table>';
+        echo $text;    
+  }
+
+  /* Affichage des infos des users */
+  public function getInfo(User $user){
+
+  }
+
+  /* Vérification de l'existence user en BD */
+  public function exist(User $user){
+    
   }
 }
 
