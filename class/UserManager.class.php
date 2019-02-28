@@ -58,22 +58,12 @@ class UserManager{
 
   /* Affichage de la liste des users */
   public function getList(){
-     $req = $this->getBd()->query("SELECT email,pseudo,mdp,actif,date_inscription,admin  FROM User;");
+     $req = $this->getBd()->query("SELECT pseudo FROM User;");
      $text="<table border='1' style='text-align:center;' ><tr>
         <th> pseudo </th>
-        <th> email </th>
-        <th> mdp </th>
-        <th> actif </th>
-        <th> date_inscription </th>
-        <th> admin </th>
       </tr>";
       while ($donnees = $req->fetch() ) {
        $text.= '<tr><td>'.$donnees['pseudo'].'</td>';
-       $text.= '<td>'.$donnees['email'].'</td>';
-       $text.= '<td>'.$donnees['mdp'].'</td>';
-       $text.= '<td>'.$donnees['actif'].'</td>';
-       $text.= '<td>'.$donnees['date_inscription'].'</td>';
-       $text.= '<td>'.$donnees['admin'].'</td></tr>';
       }
       $text.='</table>';
         echo $text;    
